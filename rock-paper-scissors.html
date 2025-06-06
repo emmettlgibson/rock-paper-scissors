@@ -8,58 +8,61 @@
 <body>
  
 <script>
-
-let computer = Math.floor(Math.random() * 3);
-
-function getComputerChoice () {
-if (computer === 0) {
- return 'Rock';
-} else if (computer === 1) {
- return 'Paper';
-} else if (computer === 2) {
- return 'Scissors';
-}
-}
-
-let human = prompt();
-
-
-function getHumanChoice () {
-if (human === 'Rock') {
- return 'Rock';
-} else if (human === 'Paper' ) {
- return 'Paper';
-} else if (human === 'Scissors') {
- return 'Scissors'
-}
-}
-
-
+const rock = 'Rock';
+const paper = 'Paper';
+const scissors = 'Scissors'
 let humanScore = 0;
 let computerScore = 0;
 
+
+
+function playGame () {
+
+function getComputerChoice () {
+let computer = Math.floor(Math.random() * 3);
+if (computer === 0) {
+ return rock;
+} else if (computer === 1) {
+ return paper;
+} else if (computer === 2) {
+ return scissors;
+}
+}
+
+const human = prompt("Rock, paper, or scissors?");
+
+function getHumanChoice () {
+if (human === rock) {
+ return 'Rock';
+} else if (human === paper ) {
+ return 'Paper';
+} else if (human === scissors) {
+ return 'Scissors'
+}
+};
+
 function playRound (humanChoice, computerChoice) {
-if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
+if (humanChoice === rock && computerChoice === 'Scissors') {
  console.log('You win!, Rock beats Scissors.')
  humanScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
-} else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
+} else if (humanChoice === paper && computerChoice === 'Rock') {
  console.log('You win!, Paper beats Rock.')
  humanScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
-} else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+} else if (humanChoice === scissors && computerChoice === 'Paper') {
  console.log('You win!, Scissors beats Paper.')
  humanScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
-} else if(computerChoice === 'Rock' && humanChoice === 'Scissors') {
+} else if(computerChoice === 'Rock' && humanChoice === scissors) {
  console.log('You lose!, Rock beats Scissors.')
  computerScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
-} else if (computerChoice === 'Paper' && humanChoice === 'Rock') {
+} else if (computerChoice === 'Paper' && humanChoice === rock) {
  console.log('You lose!, Paper beats Rock.')
  computerScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
-} else if (computerChoice === 'Scissors' && humanChoice === 'Paper') {
+} else if (computerChoice === 'Scissors' && humanChoice === paper) {
  console.log('You lose!, Scissors beats Paper.')
  computerScore++;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
@@ -68,19 +71,27 @@ if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
  humanScore;
  computerScore;
  console.log(`Human = ${humanScore} Computer = ${computerScore}`)
- /*human and computer doesn't work for the function but the parameters do. I think it is do to the paramters and the variables in the bottom portion. I also switched the computer variabale to be outsid eof the function*/
 }
 }
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
-
-
-function playGame () { {
-
-}
+playRound(humanSelection, computerSelection);
 }
 
-playGame();
+
+let roundOne = playGame();
+let roundTwo = playGame();
+let roundThree = playGame();
+let roundFour = playGame();
+let roundFive = playGame();
+
+
+if (computerScore > humanScore) {
+  console.log('You lose!, Computer wins!')
+} else if (humanScore > computerScore) {
+  console.log('You win!, Computer loses!')
+}
+
 </script>
 
 
